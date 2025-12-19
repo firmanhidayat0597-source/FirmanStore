@@ -272,11 +272,19 @@
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="margin-bottom: 10px;">Metode Pembayaran</h3>
-            <p style="font-size: 0.9rem; margin: 10px 0; color: #666;">Pilih metode pembayaran yang mudah melalui Saweria:</p>
+            <h3 style="margin-bottom: 20px;">Metode Pembayaran</h3>
+
+            <div style="background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-bottom: 20px;">
+                <p style="font-size: 0.85rem; font-weight: bold; color: var(--primary); margin-bottom: 5px;">DANA / OVO / GOPAY</p>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin: 5px 0;">082173552154</div>
+                <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">a.n Firman Hidayat</p>
+                <button onclick="copyNumber()" style="background: var(--dark); color: white; border: none; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; cursor: pointer; transition:0.3s;">📋 Salin Nomor</button>
+            </div>
+
+            <p style="font-size: 0.8rem; margin: 10px 0; color: #666;">Atau scan QRIS / Virtual Account via:</p>
             
             <a href="https://saweria.co/FirmanHidayat05" target="_blank" class="btn-modal-saweria">
-                🎁 Bayar di Saweria (DANA/OVO/QRIS)
+                🎁 Bayar di Saweria
             </a>
 
             <div style="margin-top: 25px; font-size: 0.8rem;">
@@ -293,7 +301,14 @@
         function openModal(e) { e.preventDefault(); modal.classList.add("show"); }
         function closeModal() { modal.classList.remove("show"); }
         window.onclick = function(e) { if (e.target == modal) closeModal(); }
+        
         function kirimPesan(e) { e.preventDefault(); alert("Pesan terkirim!"); e.target.reset(); }
+
+        // Fungsi Salin Nomor
+        function copyNumber() {
+            navigator.clipboard.writeText("082173552154");
+            alert("Nomor 082173552154 berhasil disalin!");
+        }
     </script>
 </body>
 </html>
