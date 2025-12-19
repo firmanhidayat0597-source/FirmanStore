@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirmanStore - Edisi Saweria Lengkap</title>
+    <title>FirmanStore - Edisi Lengkap</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -14,7 +14,7 @@
             --dark: #111827;
             --light: #f3f4f6;
             --saweria: #ffc107; /* Kuning Saweria */
-            --saweria-text: #78350f; /* Coklat tua agar kontras */
+            --saweria-text: #78350f; 
         }
 
         * {
@@ -24,7 +24,7 @@
 
         body { background-color: #f9fafb; color: var(--dark); }
 
-        /* --- 2. NAVBAR DENGAN LINK SAWERIA --- */
+        /* --- 2. NAVBAR --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: rgba(255, 255, 255, 0.98);
@@ -45,10 +45,9 @@
         }
         .nav-links a.menu-item:hover { color: var(--primary); }
 
-        /* Tombol Khusus Saweria di Navbar */
         .nav-saweria-btn {
             background: transparent;
-            color: #d97706; /* Warna Emas Gelap */
+            color: #d97706; 
             font-weight: 700;
             text-decoration: none;
             display: flex; align-items: center; gap: 5px;
@@ -110,10 +109,22 @@
         
         .card-price {
             font-size: 1rem; color: var(--primary); font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        /* TOMBOL KUNING SAWERIA DI PRODUK */
+        /* TOMBOL BELI SEKARANG (MANUAL) - BARU */
+        .btn-buy-manual {
+            background: var(--dark); /* Warna Hitam/Gelap */
+            color: white;
+            padding: 8px; border-radius: 8px;
+            font-size: 0.9rem; text-decoration: none;
+            font-weight: 700; text-align: center; display: block;
+            margin-bottom: 8px; /* Jarak dengan tombol Saweria */
+            transition: 0.3s;
+        }
+        .btn-buy-manual:hover { background: var(--primary); }
+
+        /* TOMBOL BELI SAWERIA */
         .btn-buy-saweria {
             background: var(--saweria); 
             color: var(--saweria-text); 
@@ -124,7 +135,7 @@
         }
         .btn-buy-saweria:hover { background: #fbbf24; box-shadow: 0 4px 10px rgba(251, 191, 36, 0.4); }
 
-        /* --- 5. FOOTER & KONTAK (Gradasi Biru Pink) --- */
+        /* --- 5. FOOTER & KONTAK --- */
         footer { 
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white; padding: 60px 5% 20px; margin-top: 50px;
@@ -166,7 +177,7 @@
         }
         
         @media (max-width: 768px) { 
-            .nav-links { display: none; } /* Menyembunyikan menu di HP agar rapi */
+            .nav-links { display: none; }
             .footer-container { grid-template-columns: 1fr; gap: 30px; }
             .hero h1 { font-size: 2.5rem; }
         }
@@ -200,50 +211,110 @@
         </div>
         
         <div class="product-grid">
-            <div class="card"><div class="card-img"><img src="1.jpg" alt="Headphone"></div><div class="card-body"><div class="card-title">1. Headphone Pro</div><div class="card-desc">Suara jernih extra bass.</div><div class="card-price">Rp 250.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="1.jpg" alt="Headphone"></div><div class="card-body"><div class="card-title">1. Headphone Pro</div><div class="card-desc">Suara jernih extra bass.</div><div class="card-price">Rp 250.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="2.jpg" alt="Smartwatch"></div><div class="card-body"><div class="card-title">2. Smartwatch</div><div class="card-desc">Anti air & baterai awet.</div><div class="card-price">Rp 1.200.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="2.jpg" alt="Smartwatch"></div><div class="card-body"><div class="card-title">2. Smartwatch</div><div class="card-desc">Anti air & baterai awet.</div><div class="card-price">Rp 1.200.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="3.jpg" alt="Kamera"></div><div class="card-body"><div class="card-title">3. Kamera 4K</div><div class="card-desc">Resolusi tinggi ultra HD.</div><div class="card-price">Rp 8.500.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="3.jpg" alt="Kamera"></div><div class="card-body"><div class="card-title">3. Kamera 4K</div><div class="card-desc">Resolusi tinggi ultra HD.</div><div class="card-price">Rp 8.500.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="4.jpg" alt="Console"></div><div class="card-body"><div class="card-title">4. Game Console</div><div class="card-desc">Paket stik wireless.</div><div class="card-price">Rp 800.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="4.jpg" alt="Console"></div><div class="card-body"><div class="card-title">4. Game Console</div><div class="card-desc">Paket stik wireless.</div><div class="card-price">Rp 800.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="5.jpg" alt="Laptop"></div><div class="card-body"><div class="card-title">5. Laptop Gaming</div><div class="card-desc">RTX 4060, RAM 16GB.</div><div class="card-price">Rp 17.000.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="5.jpg" alt="Laptop"></div><div class="card-body"><div class="card-title">5. Laptop Gaming</div><div class="card-desc">RTX 4060, RAM 16GB.</div><div class="card-price">Rp 17.000.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="6.jpg" alt="HP"></div><div class="card-body"><div class="card-title">6. Smartphone 5G</div><div class="card-desc">Layar AMOLED 120Hz.</div><div class="card-price">Rp 4.500.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="6.jpg" alt="HP"></div><div class="card-body"><div class="card-title">6. Smartphone 5G</div><div class="card-desc">Layar AMOLED 120Hz.</div><div class="card-price">Rp 4.500.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="7.jpg" alt="Sepatu"></div><div class="card-body"><div class="card-title">7. Sepatu Sport</div><div class="card-desc">Ringan untuk lari.</div><div class="card-price">Rp 750.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="7.jpg" alt="Sepatu"></div><div class="card-body"><div class="card-title">7. Sepatu Sport</div><div class="card-desc">Ringan untuk lari.</div><div class="card-price">Rp 750.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="8.jpg" alt="Tas"></div><div class="card-body"><div class="card-title">8. Tas Backpack</div><div class="card-desc">Anti air & slot laptop.</div><div class="card-price">Rp 350.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="8.jpg" alt="Tas"></div><div class="card-body"><div class="card-title">8. Tas Backpack</div><div class="card-desc">Anti air & slot laptop.</div><div class="card-price">Rp 350.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="9.jpg" alt="Kacamata"></div><div class="card-body"><div class="card-title">9. Kacamata UV</div><div class="card-desc">Pelindung sinar matahari.</div><div class="card-price">Rp 150.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="9.jpg" alt="Kacamata"></div><div class="card-body"><div class="card-title">9. Kacamata UV</div><div class="card-desc">Pelindung sinar matahari.</div><div class="card-price">Rp 150.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="10.jpg" alt="Topi"></div><div class="card-body"><div class="card-title">10. Topi Snapback</div><div class="card-desc">Bahan kanvas premium.</div><div class="card-price">Rp 150.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="10.jpg" alt="Topi"></div><div class="card-body"><div class="card-title">10. Topi Snapback</div><div class="card-desc">Bahan kanvas premium.</div><div class="card-price">Rp 150.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="11.jpg" alt="Jaket"></div><div class="card-body"><div class="card-title">11. Jaket Hoodie</div><div class="card-desc">Bahan tebal & hangat.</div><div class="card-price">Rp 250.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="11.jpg" alt="Jaket"></div><div class="card-body"><div class="card-title">11. Jaket Hoodie</div><div class="card-desc">Bahan tebal & hangat.</div><div class="card-price">Rp 250.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="12.jpg" alt="Keyboard"></div><div class="card-body"><div class="card-title">12. Keyboard RGB</div><div class="card-desc">Mekanikal Blue Switch.</div><div class="card-price">Rp 600.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="12.jpg" alt="Keyboard"></div><div class="card-body"><div class="card-title">12. Keyboard RGB</div><div class="card-desc">Mekanikal Blue Switch.</div><div class="card-price">Rp 600.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="13.jpg" alt="Mouse"></div><div class="card-body"><div class="card-title">13. Mouse Gaming</div><div class="card-desc">Sensor presisi tinggi.</div><div class="card-price">Rp 300.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="13.jpg" alt="Mouse"></div><div class="card-body"><div class="card-title">13. Mouse Gaming</div><div class="card-desc">Sensor presisi tinggi.</div><div class="card-price">Rp 300.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="14.jpg" alt="Monitor"></div><div class="card-body"><div class="card-title">14. Monitor 24"</div><div class="card-desc">Panel IPS 144Hz.</div><div class="card-price">Rp 2.100.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="14.jpg" alt="Monitor"></div><div class="card-body"><div class="card-title">14. Monitor 24"</div><div class="card-desc">Panel IPS 144Hz.</div><div class="card-price">Rp 2.100.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="15.jpg" alt="Speaker"></div><div class="card-body"><div class="card-title">15. Speaker BT</div><div class="card-desc">Bass nendang & jernih.</div><div class="card-price">Rp 450.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="15.jpg" alt="Speaker"></div><div class="card-body"><div class="card-title">15. Speaker BT</div><div class="card-desc">Bass nendang & jernih.</div><div class="card-price">Rp 450.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="16.jpg" alt="Drone"></div><div class="card-body"><div class="card-title">16. Drone Mini</div><div class="card-desc">Kamera HD stabil.</div><div class="card-price">Rp 900.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="16.jpg" alt="Drone"></div><div class="card-body"><div class="card-title">16. Drone Mini</div><div class="card-desc">Kamera HD stabil.</div><div class="card-price">Rp 900.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="17.jpg" alt="Powerbank"></div><div class="card-body"><div class="card-title">17. Powerbank</div><div class="card-desc">20.000mAh Fast Charge.</div><div class="card-price">Rp 200.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="17.jpg" alt="Powerbank"></div><div class="card-body"><div class="card-title">17. Powerbank</div><div class="card-desc">20.000mAh Fast Charge.</div><div class="card-price">Rp 200.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="18.jpg" alt="Adaptor"></div><div class="card-body"><div class="card-title">18. Adaptor GaN</div><div class="card-desc">65W Charger Laptop/HP.</div><div class="card-price">Rp 300.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="18.jpg" alt="Adaptor"></div><div class="card-body"><div class="card-title">18. Adaptor GaN</div><div class="card-desc">65W Charger Laptop/HP.</div><div class="card-price">Rp 300.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="19.jpg" alt="Tripod"></div><div class="card-body"><div class="card-title">19. Tripod Pro</div><div class="card-desc">Kokoh untuk kamera.</div><div class="card-price">Rp 400.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="19.jpg" alt="Tripod"></div><div class="card-body"><div class="card-title">19. Tripod Pro</div><div class="card-desc">Kokoh untuk kamera.</div><div class="card-price">Rp 400.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
             
-            <div class="card"><div class="card-img"><img src="20.jpg" alt="Case"></div><div class="card-body"><div class="card-title">20. Case HP</div><div class="card-desc">Anti banting militer.</div><div class="card-price">Rp 150.000</div><a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a></div></div>
+            <div class="card"><div class="card-img"><img src="20.jpg" alt="Case"></div><div class="card-body"><div class="card-title">20. Case HP</div><div class="card-desc">Anti banting militer.</div><div class="card-price">Rp 150.000</div>
+                <a href="#" class="btn-buy-manual" onclick="openModal(event)">Beli Sekarang</a>
+                <a href="#" class="btn-buy-saweria" onclick="openModal(event)">Beli via Saweria</a>
+            </div></div>
         
         </div>
 
         <div style="text-align: center; margin-top: 50px; color: #6b7280; font-size: 0.9rem;">
-            Setelah pembayaran via Saweria, harap kirim bukti transfer ke WhatsApp kami untuk konfirmasi pesanan.
+            Setelah pembayaran via Saweria atau Manual, harap kirim bukti transfer ke WhatsApp kami untuk konfirmasi pesanan.
         </div>
     </section>
 
