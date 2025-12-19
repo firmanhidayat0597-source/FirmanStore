@@ -13,8 +13,12 @@
             --secondary: #ec4899;
             --dark: #111827;
             --light: #f3f4f6;
-            --saweria: #ffc107; /* Kuning Saweria */
+            --saweria: #ffc107; 
             --saweria-text: #78350f; 
+            /* Warna E-Wallet */
+            --dana: #118eea;
+            --ovo: #4c3494;
+            --gopay: #00aa13;
         }
 
         * {
@@ -112,19 +116,18 @@
             margin-bottom: 15px;
         }
 
-        /* TOMBOL BELI SEKARANG (MANUAL) - BARU */
+        /* TOMBOL BELI */
         .btn-buy-manual {
-            background: var(--dark); /* Warna Hitam/Gelap */
+            background: var(--dark);
             color: white;
             padding: 8px; border-radius: 8px;
             font-size: 0.9rem; text-decoration: none;
             font-weight: 700; text-align: center; display: block;
-            margin-bottom: 8px; /* Jarak dengan tombol Saweria */
+            margin-bottom: 8px;
             transition: 0.3s;
         }
         .btn-buy-manual:hover { background: var(--primary); }
 
-        /* TOMBOL BELI SAWERIA */
         .btn-buy-saweria {
             background: var(--saweria); 
             color: var(--saweria-text); 
@@ -135,7 +138,7 @@
         }
         .btn-buy-saweria:hover { background: #fbbf24; box-shadow: 0 4px 10px rgba(251, 191, 36, 0.4); }
 
-        /* --- 5. FOOTER & KONTAK --- */
+        /* --- 5. FOOTER --- */
         footer { 
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white; padding: 60px 5% 20px; margin-top: 50px;
@@ -176,6 +179,19 @@
             text-decoration: none; border-radius: 50px;
         }
         
+        /* TOMBOL E-WALLET DI MODAL */
+        .wallet-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px;
+        }
+        .btn-wallet {
+            padding: 8px 5px; border-radius: 8px; color: white;
+            text-decoration: none; font-size: 0.75rem; font-weight: 600;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+        .btn-wallet span { font-size: 1.2rem; margin-bottom: 2px; }
+        .btn-wallet:hover { transform: translateY(-2px); opacity: 0.9; }
+
         @media (max-width: 768px) { 
             .nav-links { display: none; }
             .footer-container { grid-template-columns: 1fr; gap: 30px; }
@@ -314,7 +330,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 50px; color: #6b7280; font-size: 0.9rem;">
-            Setelah pembayaran via Saweria atau Manual, harap kirim bukti transfer ke WhatsApp kami untuk konfirmasi pesanan.
+            Setelah pembayaran, harap kirim bukti transfer ke WhatsApp kami untuk konfirmasi pesanan.
         </div>
     </section>
 
@@ -343,24 +359,35 @@
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="margin-bottom: 20px;">Metode Pembayaran</h3>
+            <h3 style="margin-bottom: 15px;">Pilih Pembayaran</h3>
 
-            <div style="background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-bottom: 20px;">
-                <p style="font-size: 0.85rem; font-weight: bold; color: var(--primary); margin-bottom: 5px;">DANA / OVO / GOPAY</p>
-                <div style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin: 5px 0;">082173552154</div>
-                <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">a.n Firman Hidayat</p>
-                <button onclick="copyNumber()" style="background: var(--dark); color: white; border: none; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; cursor: pointer; transition:0.3s;">📋 Salin Nomor</button>
+            <div style="background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-bottom: 15px;">
+                <p style="font-size: 0.8rem; font-weight: bold; color: var(--primary); margin-bottom: 5px;">TRANSFER MANUAL</p>
+                <div style="font-size: 1.2rem; font-weight: 800; color: var(--dark); margin: 5px 0;">082173552154</div>
+                <p style="font-size: 0.8rem; color: #6b7280; margin-bottom: 10px;">a.n Firman Hidayat</p>
+                <button onclick="copyNumber()" style="background: #e2e8f0; color: var(--dark); border: none; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; cursor: pointer; margin-bottom: 15px;">📋 Salin Nomor</button>
+                
+                <div style="text-align: left; font-size: 0.75rem; color: #666; margin-bottom: 5px; font-weight: 600;">Buka Aplikasi Langsung:</div>
+                <div class="wallet-grid">
+                    <a href="https://link.dana.id/sendmoney?mobile=6282173552154" target="_blank" class="btn-wallet" style="background-color: var(--dana);">
+                        <span>💳</span> Buka DANA
+                    </a>
+                    <a href="ovo://" class="btn-wallet" style="background-color: var(--ovo);">
+                        <span>🟣</span> Buka OVO
+                    </a>
+                    <a href="gojek://" class="btn-wallet" style="background-color: var(--gopay);">
+                        <span>🟢</span> Buka GoPay
+                    </a>
+                </div>
             </div>
-
-            <p style="font-size: 0.8rem; margin: 10px 0; color: #666;">Atau scan QRIS / Virtual Account via:</p>
             
             <a href="https://saweria.co/FirmanHidayat05" target="_blank" class="btn-modal-saweria">
                 🎁 Bayar di Saweria
             </a>
 
-            <div style="margin-top: 25px; font-size: 0.8rem;">
+            <div style="margin-top: 20px; font-size: 0.8rem;">
                 <p>Sudah melakukan pembayaran?</p>
-                <a href="https://wa.me/6282173552154?text=Halo%20Admin,%20saya%20sudah%20bayar%20via%20Saweria" target="_blank" style="color: green; font-weight: bold; text-decoration: none; display: flex; align-items: center; justify-content: center; margin-top: 5px;">
+                <a href="https://wa.me/6282173552154?text=Halo%20Admin,%20saya%20sudah%20bayar" target="_blank" style="color: green; font-weight: bold; text-decoration: none; display: flex; align-items: center; justify-content: center; margin-top: 5px;">
                     <span style="font-size: 1.2rem; margin-right: 5px;">📱</span> Konfirmasi ke WhatsApp
                 </a>
             </div>
@@ -375,7 +402,6 @@
         
         function kirimPesan(e) { e.preventDefault(); alert("Pesan terkirim!"); e.target.reset(); }
 
-        // Fungsi Salin Nomor
         function copyNumber() {
             navigator.clipboard.writeText("082173552154");
             alert("Nomor 082173552154 berhasil disalin!");
