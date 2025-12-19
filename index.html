@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirmanStore - Produk Lengkap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. PENGATURAN DASAR --- */
+        :root {
+            --primary: #4f46e5;
+            --secondary: #ec4899;
+            --dark: #111827;
+            --light: #f3f4f6;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif; scroll-behavior: smooth;
+        }
+
+        body { background-color: #ffffff; color: var(--dark); }
+
+        /* --- 2. NAVBAR --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: rgba(255, 255, 255, 0.95);
+            position: fixed; width: 100%; top: 0; z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem; font-weight: 700;
+            background: -webkit-linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            text-decoration: none; color: var(--dark); margin-left: 20px;
+            font-weight: 600; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(30, 27, 75, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 0 20px;
+            position: relative; 
+        }
+
+        .hero-content { z-index: 2; max-width: 800px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; opacity: 0.9; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        
+        .btn-cta {
+            padding: 15px 40px; background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white; border-radius: 50px; text-decoration: none; font-weight: 600;
+            display: inline-block; transition: 0.3s; margin-top: 30px;
+            box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+        }
+        .btn-cta:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px rgba(79, 70, 229, 0.7); }
+
+        /* --- 4. GRID PRODUK --- */
+        .section { padding: 80px 5%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .card {
+            background: white; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
+            border: 1px solid #eee; display: flex; flex-direction: column;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
+        
+        .card-img {
+            height: 180px; background-color: #f8fafc; display: flex;
+            align-items: center; justify-content: center; font-size: 3rem;
+        }
+        .card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-title { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+        .card-desc { font-size: 0.8rem; color: #6b7280; margin-bottom: 15px; flex-grow: 1; }
+        
+        .card-price {
+            font-size: 1rem; color: var(--primary); font-weight: 700;
+            display: flex; justify-content: space-between; align-items: center; margin-top: auto;
+        }
+
+        .btn-buy {
+            background: var(--dark); color: white; padding: 6px 12px;
+            border-radius: 6px; font-size: 0.8rem; text-decoration: none; transition: 0.3s;
+        }
+        .btn-buy:hover { background: var(--primary); }
+
+        /* --- 5. FOOTER & KONTAK (BAGIAN YANG DIUBAH) --- */
+        footer { 
+            /* UBAH BACKGROUND DISINI: Pakai gradasi warna Primary ke Secondary */
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white; 
+            padding: 60px 5% 20px; 
+        }
+        
+        .footer-container {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info h3, .contact-form h3 {
+            font-size: 1.5rem; 
+            color: white; /* Judul diubah jadi putih agar kontras */
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .info-item {
+            margin-bottom: 15px; display: flex; align-items: flex-start;
+            font-size: 0.95rem; color: #f3f4f6; /* Warna teks agak terang */
+        }
+        .info-icon { margin-right: 10px; font-size: 1.2rem; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-input {
+            width: 100%; padding: 12px; 
+            background: rgba(255,255,255,0.2); /* Background input transparan */
+            border: 1px solid rgba(255,255,255,0.3); 
+            border-radius: 8px; color: white;
+            font-family: inherit;
+        }
+        .form-input::placeholder { color: #e5e7eb; } /* Placeholder lebih terang */
+        .form-input:focus { outline: none; border-color: white; background: rgba(255,255,255,0.3); }
+        
+        .btn-send {
+            background: white; /* Tombol jadi putih */
+            color: var(--primary); /* Teks tombol jadi ungu */
+            border: none;
+            padding: 12px 30px; border-radius: 8px; cursor: pointer;
+            font-weight: 700; transition: 0.3s; width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-send:hover { background: var(--dark); color: white; }
+
+        .copyright {
+            text-align: center; padding-top: 20px; 
+            border-top: 1px solid rgba(255,255,255,0.3);
+            color: #f3f4f6; font-size: 0.85rem;
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px); align-items: center; justify-content: center;
+        }
+        .modal.show { display: flex; }
+        .modal-content {
+            background: white; padding: 30px; border-radius: 20px;
+            width: 90%; max-width: 400px; text-align: center; position: relative;
+        }
+        .close-btn {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;
+        }
+        .payment-details {
+            background: #f8fafc; padding: 20px; border-radius: 12px;
+            margin: 20px 0; border: 1px dashed #cbd5e1;
+        }
+        .number-display {
+            font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 10px 0;
+        }
+        .btn-copy-modal {
+            background: var(--dark); color: white; border: none; padding: 8px 20px;
+            border-radius: 50px; cursor: pointer;
+        }
+        
+        @media (max-width: 768px) { 
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">FirmanStore.</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#produk">Produk</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Pusat Teknologi dan Aksesoris</h1>
+            <p>Temukan barang dan aksesoris kesukaan anda dengan kualitas terbaik untuk menunjang gaya hidup digital Anda.</p>
+            <a href="#produk" class="btn-cta">Lihat Katalog FirmanStore ➔</a>
+        </div>
+    </section>
+
+    <section class="section" id="produk">
+        <div class="section-title">
+            <h2>Pilih Barang Kesukaanmu Disini</h2>
+        </div>
+        
+        <div class="product-grid">
+            <div class="card"><div class="card-img"><img src="1.jpg" alt="Img"></div><div class="card-body"><div class="card-title">1. Headphone Pro</div><div class="card-desc">Suara jernih extra bass.</div><div class="card-price">Rp 250.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="2.jpg" alt="Img"></div><div class="card-body"><div class="card-title">2. Smartwatch</div><div class="card-desc">Anti air & baterai awet.</div><div class="card-price">Rp 1.200.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="3.jpg" alt="Img"></div><div class="card-body"><div class="card-title">3. Kamera 4K</div><div class="card-desc">Resolusi tinggi ultra HD.</div><div class="card-price">Rp 8.500.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="4.jpg" alt="Img"></div><div class="card-body"><div class="card-title">4. Game Console</div><div class="card-desc">Paket stik wireless.</div><div class="card-price">Rp 800.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="5.jpg" alt="Img"></div><div class="card-body"><div class="card-title">5. Laptop Gaming</div><div class="card-desc">RTX 4060, RAM 16GB.</div><div class="card-price">Rp 17.000.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="6.jpg" alt="Img"></div><div class="card-body"><div class="card-title">6. Smartphone 5G</div><div class="card-desc">Layar AMOLED 120Hz.</div><div class="card-price">Rp 4.500.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="7.jpg" alt="Img"></div><div class="card-body"><div class="card-title">7. Sepatu Sport</div><div class="card-desc">Ringan untuk lari.</div><div class="card-price">Rp 750.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="8.jpg" alt="Img"></div><div class="card-body"><div class="card-title">8. Tas Backpack</div><div class="card-desc">Anti air & slot laptop.</div><div class="card-price">Rp 350.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="9.jpg" alt="Img"></div><div class="card-body"><div class="card-title">9. Kacamata UV</div><div class="card-desc">Pelindung sinar matahari.</div><div class="card-price">Rp 150.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="10.jpg" alt="Img"></div><div class="card-body"><div class="card-title">10. Topi Snapback</div><div class="card-desc">Bahan kanvas premium.</div><div class="card-price">Rp 150.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="11.jpg" alt="Img"></div><div class="card-body"><div class="card-title">11. Jaket Hoodie</div><div class="card-desc">Bahan tebal & hangat.</div><div class="card-price">Rp 250.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="12.jpg" alt="Img"></div><div class="card-body"><div class="card-title">12. Keyboard RGB</div><div class="card-desc">Mekanikal Blue Switch.</div><div class="card-price">Rp 600.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="13.jpg" alt="Img"></div><div class="card-body"><div class="card-title">13. Mouse Gaming</div><div class="card-desc">Sensor presisi tinggi.</div><div class="card-price">Rp 300.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="14.jpg" alt="Img"></div><div class="card-body"><div class="card-title">14. Monitor 24"</div><div class="card-desc">Panel IPS 144Hz.</div><div class="card-price">Rp 2.100.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="15.jpg" alt="Img"></div><div class="card-body"><div class="card-title">15. Speaker BT</div><div class="card-desc">Bass nendang & jernih.</div><div class="card-price">Rp 450.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="16.jpg" alt="Img"></div><div class="card-body"><div class="card-title">16. Drone Mini</div><div class="card-desc">Kamera HD stabil.</div><div class="card-price">Rp 900.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="17.jpg" alt="Img"></div><div class="card-body"><div class="card-title">17. Powerbank</div><div class="card-desc">20.000mAh Fast Charge.</div><div class="card-price">Rp 200.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="18.jpg" alt="Img"></div><div class="card-body"><div class="card-title">18. Adaptor GaN</div><div class="card-desc">65W Charger Laptop/HP.</div><div class="card-price">Rp 300.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="19.jpg" alt="Img"></div><div class="card-body"><div class="card-title">19. Tripod Pro</div><div class="card-desc">Kokoh untuk kamera.</div><div class="card-price">Rp 400.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+            <div class="card"><div class="card-img"><img src="20.jpg" alt="Img"></div><div class="card-body"><div class="card-title">20. Case HP</div><div class="card-desc">Anti banting militer.</div><div class="card-price">Rp 150.000 <a href="#" class="btn-buy" onclick="openModal(event)">Beli</a></div></div></div>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Hubungi Kami</h3>
+                <p>Butuh bantuan atau ingin memesan langsung? Hubungi admin FirmanStore melalui kontak di bawah ini.</p>
+                
+                <div class="info-item">
+                    <span class="info-icon">📍</span> 
+                    <span>Jalan Umbansari, Pekanbaru Indonesia</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📞</span> 
+                    <span>0821-7355-2154 (Admin FirmanStore)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">✉️</span> 
+                    <span>firmanhidayat0597@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">⏰</span> 
+                    <span>Senin - Sabtu (09.00 - 17.00 WIB)</span>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Kirim Pesan</h3>
+                <form onsubmit="kirim Pesan(event)">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Alamat Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" rows="4" placeholder="Tulis pesan Anda disini..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">Kirim Pesan ➔</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2025 FirmanStore.
+        </div>
+    </footer>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h3>Detail Pembayaran</h3>
+            </div>
+            <div class="payment-details">
+                <p>DANA / OVO / GOPAY / SHOPEEPAY</p>
+                <div class="number-display" id="textToCopy">082173552154</div>
+                <p>a.n Firman Hidayat</p>
+                <button class="btn-copy-modal" onclick="copyNumber()">📋 Salin Nomor</button>
+            </div>
+            <a href="https://wa.me/6282173552154?text=Halo%20Admin,%20saya%20sudah%20transfer" target="_blank" style="color:green; font-weight:bold; text-decoration:none;">Konfirmasi WA ➔</a>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("paymentModal");
+        function openModal(e) { e.preventDefault(); modal.classList.add("show"); }
+        function closeModal() { modal.classList.remove("show"); }
+        window.onclick = function(e) { if (e.target == modal) closeModal(); }
+        function copyNumber() {
+            navigator.clipboard.writeText("082173552154");
+            alert("Nomor 082173552154 disalin!");
+        }
+
+        function kirimPesan(e) {
+            e.preventDefault();
+            alert("Terima kasih! Pesan Anda telah terkirim ke Admin FirmanStore.");
+            e.target.reset(); 
+        }
+    </script>
+</body>
+</html>
